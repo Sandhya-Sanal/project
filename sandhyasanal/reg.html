@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <TITLE>Kerala Tourism</TITLE>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+    function Registration()
+    {
+      
+      var uname = document.forms["myForm"]["uname"].value;
+      var pwd = document.forms["myForm"]["psw"].value;
+      var lowerCaseLetters = /[a-z]/g;
+      var upperCaseLetters = /[A-Z]/g;
+  
+      if(uname =='')
+      {
+        alert("please enter user name.");
+        return false;
+      }
+      else if(pwd=='')
+      {
+            alert("enter the password");
+            return false;
+      }
+      
+      else if(pwd.length < 8)
+      {
+        alert("Password length is too short.");
+        return false;
+      }
+      
+    else if(pwd.value.match(lowerCaseLetters))
+      {
+  alert("password should contain atleast one lower letter");
+  return false;
+      }
+      else if(pwd.value.match(upperCaseLetters))
+      {
+  
+        alert("password should contain atleast one upper letter")
+        return false;
+      }
+      else if(!lowerCaseLetters.test(pwd)) {
+          alert("password should contain atleast one number and one special character");
+          return false;
+      }
+      else
+      {
+    alert('Thank You for Login & You are Redirecting to Campuslife Website');
+    return true;
+         }
+    }
+     </script>
+    
+    <script language="javascript">
+     function passwordChanged() {
+         var strength = document.getElementById('strength');
+         var strongRegex = new RegExp("^(?=.{12,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
+         var mediumRegex = new RegExp("^(?=.{10,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
+         var enoughRegex = new RegExp("(?=.{8,}).*", "g");
+         var pwd = document.getElementById("psw");
+         if (pwd.value.length == 0) {
+             strength.innerHTML = 'Type Password';
+         } else if (false == enoughRegex.test(pwd.value)) {
+             strength.innerHTML = 'More Characters';
+         } else if (strongRegex.test(pwd.value)) {
+             strength.innerHTML = '<span style="color:green">Strong!</span>';
+         } else if (mediumRegex.test(pwd.value)) {
+             strength.innerHTML = '<span style="color:orange">Medium!</span>';
+         } else {
+             strength.innerHTML = '<span style="color:red">Weak!</span>';
+         }
+     }
+ </script>
+
+</head>
+<body BACKGROUND="images/ktm3.jpg">
+    <header>
+    <div class="head-tag">
+        <a href="login.html">login</a>
+        <a href="reg.html">sign up</a>
+        <a href="districts.html">places</a>
+     
+    </div>
+</header> 
+
+  
+<body>    
+    <form name="regform" action="action_page.php" onsubmit="return registration()" method="post">
+      
+        <div class="regbox">
+
+          <label for="uname"><b>Name</b></label>
+          <input type="text" placeholder="Enter name" name="uname" id="uname">
+          <br>
+            <label for="PHNO"><b>Phone Number</b></label>
+            <input type="text" placeholder="Enter Phone Number" name="PHNO" id="phno">
+        <br>
+
+      
+        <label for="PHNO"><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" name="email" id="email">
+
+
+        <br>
+           <label for="psw"><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="psw" id="psw" onkeyup="return passwordChanged();" >
+
+        <br>
+
+        <br>
+        <label for="psw"><b>Confirm Password</b></label>
+        <input type="password" placeholder="Enter Confirm Password" name="psw2" >
+
+    <br>
+
+          <button type="submit">REGISTER</button>
+          <label>
+            <input type="checkbox" checked="checked" name="remember"> Remember me
+          </label>
+         
+           
+          </div>
+        </div>
+      
+      
+      </form>
+</body>   
+</html>  
